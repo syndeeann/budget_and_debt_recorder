@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS tbl_debtors (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(11) DEFAULT NULL,
+    name VARCHAR(255) NOT NULL,
+    note TEXT,
+    amount DOUBLE NOT NULL,
+    debt_type VARCHAR(255),
+    debt_status ENUM('0', '1') NOT NULL,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    active_status ENUM('0', '1') DEFAULT '1' NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES tbl_user(id) ON DELETE SET NULL
+)ENGINE=InnoDB
